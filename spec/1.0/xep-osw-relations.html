@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-: Social Relationships</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="DC.Title" content="Social Relationships" /><meta name="DC.Creator" content="Laurent Eschenauer" /><meta name="DC.Description" content="This draft specification defines an XMPP protocol extension for establishing, sharing, confirming and verifying social relationships between users. The protocol enables a user to establish social relationships (e.g. friend, colleague, member) with an other user, to expose (share) his established relationships with other users, to confirm that a relationship declared by another user is true, and to verify that a relationship declared by an user towards another user is indeed true. Each relationship can be assigned a fine grained privacy control: users can assign access control rules on a relationship per relationship basis. This protocol aims at providing a flexible platform for social relationships management in a decentralized social network, thus enabling all social network use cases related to relationships. This extension is part of the OneSocialWeb suite of XMPP extensions. The data format is inspired by the work of the XFN standard." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2010-01-25" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="" /></head><body onload="prettyPrint()"><h1>XEP-: Social Relationships</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for establishing, sharing, confirming and verifying social relationships between users. The protocol enables a user to establish social relationships (e.g. friend, colleague, member) with an other user, to expose (share) his established relationships with other users, to confirm that a relationship declared by another user is true, and to verify that a relationship declared by an user towards another user is indeed true. Each relationship can be assigned a fine grained privacy control: users can assign access control rules on a relationship per relationship basis. This protocol aims at providing a flexible platform for social relationships management in a decentralized social network, thus enabling all social network use cases related to relationships. This extension is part of the OneSocialWeb suite of XMPP extensions. The data format is inspired by the work of the XFN standard.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Laurent Eschenauer</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 2010 Vodafone Group R&amp;D.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td></td></tr><tr valign="top"><td><strong>Type:</strong></td><td></td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.0.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2010-01-25</td></tr></table><hr /><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Overview</a><br />   
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-: Social Relationships</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="DC.Title" content="Social Relationships" /><meta name="DC.Creator" content="Laurent Eschenauer" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for establishing, sharing, confirming and verifying social relationships between users. The protocol enables a user to establish social relationships (e.g. friend, colleague, member) with an other user, to expose (share) his established relationships with other users, to confirm that a relationship declared by another user is true, and to verify that a relationship declared by an user towards another user is indeed true. Each relationship can be assigned a fine grained privacy control: users can assign access control rules on a relationship per relationship basis. This protocol aims at providing a flexible platform for social relationships management in a decentralized social network, thus enabling all social network use cases related to relationships. This extension is part of the OneSocialWeb suite of XMPP extensions. The data format is inspired by the work of the XFN standard." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2010-02-02" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="" /></head><body onload="prettyPrint()"><h1>XEP-: Social Relationships</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for establishing, sharing, confirming and verifying social relationships between users. The protocol enables a user to establish social relationships (e.g. friend, colleague, member) with an other user, to expose (share) his established relationships with other users, to confirm that a relationship declared by another user is true, and to verify that a relationship declared by an user towards another user is indeed true. Each relationship can be assigned a fine grained privacy control: users can assign access control rules on a relationship per relationship basis. This protocol aims at providing a flexible platform for social relationships management in a decentralized social network, thus enabling all social network use cases related to relationships. This extension is part of the OneSocialWeb suite of XMPP extensions. The data format is inspired by the work of the XFN standard.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Laurent Eschenauer</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 2010 Vodafone Group R&amp;D.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td></td></tr><tr valign="top"><td><strong>Type:</strong></td><td></td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2010-02-02</td></tr></table><hr /><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />   
       1.1.  <a href="#intro-overview">Overview</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#glossary">Glossary</a><br />4.  <a href="#publisher">Publisher Use Cases</a><br />   
       4.1.  <a href="#publisher-setup">Setup a new relationship</a><br />   
       4.2.  <a href="#publisher-confirm">Confirm or declining a relationship</a><br />   
@@ -10,8 +10,8 @@
       4.6.  <a href="#publisher-delete">Delete a relationship</a><br />5.  <a href="#reader">Reader Use Cases</a><br />   
       5.1.  <a href="#reader-query">Query Relationships</a><br />   
       5.2.  <a href="#reader-verify">Verify a relationship</a><br />6.  <a href="#application">Application Use Cases</a><br />7.  <a href="#model">Data Model</a><br />   
-      7.1.  <a href="#sect-id2541668">Schema</a><br />8.  <a href="#rules">Business Rules</a><br />9.  <a href="#impl">Implementation Notes</a><br />10.  <a href="#access">Accessibility Considerations</a><br />11.  <a href="#i18n">Internationalization Considerations</a><br />12.  <a href="#security">Security Considerations</a><br />13.  <a href="#iana">IANA Considerations</a><br />14.  <a href="#registrar">XMPP Registrar Considerations</a><br />15.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
-       <a name="intro" id="intro">Overview</a></h2>
+      7.1.  <a href="#sect-id2332862">Schema</a><br />8.  <a href="#rules">Business Rules</a><br />9.  <a href="#impl">Implementation Notes</a><br />10.  <a href="#access">Accessibility Considerations</a><br />11.  <a href="#i18n">Internationalization Considerations</a><br />12.  <a href="#security">Security Considerations</a><br />13.  <a href="#iana">IANA Considerations</a><br />14.  <a href="#registrar">XMPP Registrar Considerations</a><br />15.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
   <div class="indent"><h3>1.1 <a name="intro-overview" id="intro-overview">Overview</a></h3>
     <p class="" style="">The XMPP Extension defined in this document is part of a collection of XMPP extensions that forms the OneSocialWeb (OSW) protocol. The purpose of the OneSocialWeb protocol is to enable free, open, and decentralized social applications on the web. In particular, this protocol can be used to turn any XMPP server into a full fledged social network, participating in the OneSocialWeb federation. The suite of extension covers all the usual social networking use cases such as user profiles, relationships, activity streams and third party applications. In addition, it provides support for fine grained access control, realtime notification and collaboration.</p>
     <p class="" style="">The Social Relationships extension defined in this document addresses the requirement for establishing, sharing, confirming and verifying social relationships between entities. A relationship has a nature (e.g. friend, colleague, sibling, parent) which can imply properties of symmetry and transitivity. It can be unilateral or bilateral (= confirmed as true by the other party). The data model used in this extension is inspired by the XHTML Friends Networks standard.</p>
@@ -60,61 +60,46 @@
 
     </pre></div>
 
-<p class="" style="">Romeo's server intercept the request, validates it, store this new relationship locally as pending, adds some required fields to the payload, remove the fields that are private to Romeo and forwards it to Juliet's server:</p>
+<p class="" style="">Romeo's server intercept the request, validates it, store this new relationship locally as pending, adds some required fields to the payload, remove the fields that are private to Romeo and sends a notification to Juliet to inform her of this request.</p>
 
-    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Server stamps and forward setup request</p><div class="indent"><pre class="prettyprint">
-&lt;iq type='set'
-    from='romeo@montague.lit/orchard'
-    to='juliet@capulet.lit'
-    id='osw-1'&gt;
-  &lt;setup xmlns="http://onesocialweb.org/protocol/0.1/relationship#setup"&gt;
-    &lt;relationship xmlns="http://onesocialweb.org/spec/1.0/"&gt;
-      &lt;id&gt;urn:uuid:0bfb71a4-d8fd-4410-b119-199c3596f296&lt;/id&gt;
-      &lt;published&gt;2010-01-13T12:40:51.292Z&lt;/published&gt;
-      &lt;from&gt;romeo@montague.lit&lt;/from&gt;
-      &lt;to&gt;juliet@capulet.lit&lt;/to&gt;
-      &lt;nature&gt;http://onesocialweb.org/spec/1.0/relationship/nature/engaged&lt;/nature&gt;
-      &lt;status&gt;http://onesocialweb.org/spec/1.0/relationship/status/requested&lt;/status&gt;
-      &lt;message&gt;Dear Juliet, let's say to the world that we are engaged !&lt;/message&gt;
-    &lt;/relationship&gt;
-  &lt;/setup&gt;
-&lt;/iq&gt;
-
-    </pre></div>
-
-<p class="" style="">Juliet's server replies with an IQ-result containing a &lt;setup/&gt; element with a &lt;relationship/&gt; child. The relationship item MUST contain an &lt;id/&gt; element with the same id as the one used in the request. Since the engaged relationship is a symmetrical one, Juliet must confirm it. The result therefore contains a &lt;status/&gt; element of "http://onesocialweb.org/spec/1.0/relationship/status/pending". In some cases, a relationship may be automatically confirmed (e.g. a "fan" relationship).</p>
-
-    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Remote server replies with IQ-result</p><div class="indent"><pre class="prettyprint">
-&lt;iq type='result'
-    from='juliet@capulet.lit'
-    to='romeo@montague.lit/orchard'
-    id='osw-1'&gt;
-  &lt;setup xmlns="http://onesocialweb.org/protocol/0.1/relationship#setup"&gt;
-    &lt;relationship xmlns="http://onesocialweb.org/spec/1.0/"&gt;
-      &lt;id&gt;urn:uuid:0bfb71a4-d8fd-4410-b119-199c3596f296&lt;/id&gt;
-      &lt;status&gt;http://onesocialweb.org/spec/1.0/relationship/status/pending&lt;/status&gt;
-    &lt;/relationship&gt;
-  &lt;/setup&gt;
-&lt;/iq&gt;
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Server notifies remote user of new relation</p><div class="indent"><pre class="prettyprint">
+&lt;message from="romeo@montague.lit" type="headline" to="juliet@capulet.lit" &gt;
+  &lt;notification xmlns="http://onesocialweb.org/spec/1.0/"&gt;
+    &lt;type&gt;http://onesocialweb.org/spec/1.0/notification/relationship&lt;/type&gt;
+    &lt;payload&gt;
+      &lt;relationship xmlns="http://onesocialweb.org/spec/1.0/"&gt;
+        &lt;id&gt;urn:uuid:0bfb71a4-d8fd-4410-b119-199c3596f296&lt;/id&gt;
+        &lt;published&gt;2010-01-13T12:40:51.292Z&lt;/published&gt;
+        &lt;from&gt;romeo@montague.lit&lt;/from&gt;
+        &lt;to&gt;juliet@capulet.lit&lt;/to&gt;
+        &lt;nature&gt;http://onesocialweb.org/spec/1.0/relationship/nature/engaged&lt;/nature&gt;
+        &lt;status&gt;http://onesocialweb.org/spec/1.0/relationship/status/requested&lt;/status&gt;
+        &lt;message&gt;Dear Juliet, let's say to the world that we are engaged !&lt;/message&gt;
+      &lt;/relationship&gt;
+    &lt;/payload&gt;
+  &lt;/notification&gt;
+&lt;/message&gt;
 
     </pre></div>
 
-<p class="" style="">Upon receiving the result, Romeo's server updates the relationship status in the local data store and forwards the result to Romeo's client.</p>
+<p class="" style="">Juliet's server process the request, it can either auto accept it or mark it as pending, waiting for Juliet to actually confirm the notification. When the status of the relationship changes, it sends a notification to Romeo with a &lt;relationship/&gt; child. The relationship item MUST contain an &lt;id/&gt; element with the same id as the one used in the request.</p>
 
-    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Local server forward IQ-result</p><div class="indent"><pre class="prettyprint">
-&lt;iq type='result'
-    from='juliet@capulet.lit'
-    to='romeo@montague.lit/orchard'
-    id='osw-1'&gt;
-  &lt;setup xmlns="http://onesocialweb.org/protocol/0.1/relationship#setup"&gt;
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Server notifies remote user of relation status change</p><div class="indent"><pre class="prettyprint">
+&lt;message from="juliet@capulet.lit" type="headline" to="romeo@montague.lit" &gt;
+  &lt;notification xmlns="http://onesocialweb.org/spec/1.0/"&gt;
+    &lt;type&gt;http://onesocialweb.org/spec/1.0/notification/relationship&lt;/type&gt;
+    &lt;payload&gt;
     &lt;relationship xmlns="http://onesocialweb.org/spec/1.0/"&gt;
       &lt;id&gt;urn:uuid:0bfb71a4-d8fd-4410-b119-199c3596f296&lt;/id&gt;
       &lt;status&gt;http://onesocialweb.org/spec/1.0/relationship/status/pending&lt;/status&gt;
     &lt;/relationship&gt;
-  &lt;/setup&gt;
-&lt;/iq&gt;
+    &lt;/payload&gt;
+  &lt;/notification&gt;
+&lt;/message&gt;
 
     </pre></div>
+
+<p class="" style="">Upon receiving the update notification, Romeo's server updates the relationship status in the local data store and forwards the notification to Romeo's client.</p>
 
   </div>
 
@@ -124,7 +109,7 @@
 
 <p class="" style="">Following the previous use case, let's assume that Juliet wants to confirm the engaged relationship with Romeo but to make it visible only to her friends. Her client would send the following request to her server:</p>
 
-    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. User confirms a relationship</p><div class="indent"><pre class="prettyprint">
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. User confirms a relationship</p><div class="indent"><pre class="prettyprint">
 &lt;iq type='set'
     from='juliet@capulet.lit/rose'
     to='romeo@montague.lit'
@@ -146,37 +131,20 @@
 
     </pre></div>
 
-<p class="" style="">Juliet's server forwards the update request to Romeo's server, making sure to first filter any private fields like the ACL ones.</p>
+<p class="" style="">Juliet's server notifies Romeo's server of the change, making sure to first filter any private fields like the ACL ones.</p>
 
-    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Local server forwards update request to remote server</p><div class="indent"><pre class="prettyprint">
-&lt;iq type='set'
-    from='juliet@capulet.lit/rose'
-    to='romeo@montague.lit'
-    id='osw-2'&gt;
-  &lt;update xmlns="http://onesocialweb.org/protocol/0.1/relationship#update"&gt;
-    &lt;relationship xmlns="http://onesocialweb.org/spec/1.0/"&gt;
-      &lt;id&gt;urn:uuid:0bfb71a4-d8fd-4410-b119-199c3596f296&lt;/id&gt;
-      &lt;status&gt;http://onesocialweb.org/spec/1.0/relationship/status/confirmed&lt;/status&gt;
-    &lt;/relationship&gt;
-  &lt;/update&gt;
-&lt;/iq&gt;
-
-    </pre></div>
-
-<p class="" style="">Romeo's server replies with an IQ-result ontaining an &lt;update/&gt; element with a &lt;relationship/&gt; child. The relationship item MUST contain an &lt;id/&gt; and a &lt;status/&gt; element reproducing the one in the original request.</p>
-
-    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Remote server answers with an IQ-result</p><div class="indent"><pre class="prettyprint">
-&lt;iq type='result'
-    from='romeo@montague.lit'
-    to='juliet@capulet.lit/rose'
-    id='osw-2'&gt;
-  &lt;update xmlns="http://onesocialweb.org/protocol/0.1/relationship#update"&gt;
-    &lt;relationship xmlns="http://onesocialweb.org/spec/1.0/"&gt;
-      &lt;id&gt;urn:uuid:0bfb71a4-d8fd-4410-b119-199c3596f296&lt;/id&gt;
-      &lt;status&gt;http://onesocialweb.org/spec/1.0/relationship/status/confirmed&lt;/status&gt;
-    &lt;/relationship&gt;
-  &lt;/update&gt;
-&lt;/iq&gt;
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Local server notifies remote server of update</p><div class="indent"><pre class="prettyprint">
+&lt;message from="romeo@montague.lit" type="headline" to="juliet@capulet.lit" &gt;
+  &lt;notification xmlns="http://onesocialweb.org/spec/1.0/"&gt;
+    &lt;type&gt;http://onesocialweb.org/spec/1.0/notification/relationship&lt;/type&gt;
+    &lt;payload&gt;
+      &lt;relationship xmlns="http://onesocialweb.org/spec/1.0/"&gt;
+        &lt;id&gt;urn:uuid:0bfb71a4-d8fd-4410-b119-199c3596f296&lt;/id&gt;
+        &lt;status&gt;http://onesocialweb.org/spec/1.0/relationship/status/confirmed&lt;/status&gt;
+      &lt;/relationship&gt;
+    &lt;/payload&gt;
+  &lt;/notification&gt;
+&lt;/message&gt;
 
     </pre></div>
 
@@ -192,7 +160,7 @@
 
     <p class="" style="">In the following example, Juliet decides to change the visibility of her relationship with Romeo:</p>
 
-    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. User update a relationship</p><div class="indent"><pre class="prettyprint">
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. User update a relationship</p><div class="indent"><pre class="prettyprint">
 &lt;iq type='set'
     from='juliet@capulet.lit/rose'
     to='capulet.lit'
@@ -241,7 +209,7 @@
 
     <p class="" style="">In the following example, &lt;romeo@montague.lit&gt; wants to check the relationships of &lt;juliet@capulet.lit&gt;, just because he can be quite a jealous guy :-) He opens his preferred social networking client and type in Juliet's identifier in the navigation box. The client query for the relationships with the following request:</p>
 
-   <p class="caption"><a name="example-9" id="example-9"></a>Example 9. User Query for Relationships</p><div class="indent"><pre class="prettyprint">
+   <p class="caption"><a name="example-7" id="example-7"></a>Example 7. User Query for Relationships</p><div class="indent"><pre class="prettyprint">
 &lt;iq type='get'
     from='romeo@montague.lit/orchard'
     to='juliet@capulet.lit'
@@ -253,7 +221,7 @@
 
     <p class="" style="">To which Juliet's server replies with a list of existing relationships that Romeo is allowed to see:</p>
 
-   <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Server Reply to Relationships Query</p><div class="indent"><pre class="prettyprint">
+   <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Server Reply to Relationships Query</p><div class="indent"><pre class="prettyprint">
 &lt;iq type='result'
     from='juliet@capulet.lit' 
     to='romeo@montague.lit/orchard'&gt;
@@ -292,7 +260,7 @@
        <a name="model" id="model">Data Model</a></h2>
     <p class="" style="">We have not found any data model for relationships that would fit our requirements, and have therefore opted to define our own, based on the thinking behind the <a href="http://gmpg.org/xfn/">XHTML Friends Network</a>. We would be happy to review any proposal and align with existing standards meeting our requirements.</p>
 
-    <div class="indent"><h3>7.1 <a name="sect-id2541668" id="sect-id2541668">Schema</a></h3>
+    <div class="indent"><h3>7.1 <a name="sect-id2332862" id="sect-id2332862">Schema</a></h3>
     <p class="" style="">A relationship is defined as a link between two users (identified by their bare JID). It is identified by a Globaly Unique Identified. It is characterized by a nature. It can be mutually verified, meaning that the other end of the relationship confirms this relationship as being true.</p>
 
     <ul class="" style="">
@@ -340,8 +308,8 @@
             <a href="http://xmpp.org/extensions/xep-0001.html#states-"></a><br />
             Type:
             <a href="http://xmpp.org/extensions/xep-0001.html#types-"></a><br />
-            Version: 0.0.1<br />
-            Last Updated: 2010-01-25<br />
+            Version: 0.0.2<br />
+            Last Updated: 2010-02-02<br />
                 Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0030, XEP-0059<br />
                 Supersedes: None<br />
                 Superseded By: None<br />
@@ -352,5 +320,5 @@
         Email:
         <a href="mailto:laurent.eschenauer@vodafone.com">laurent.eschenauer@vodafone.com</a><br />
         JabberID: 
-        <a href="xmpp:"></a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 3920) and XMPP IM (RFC 3921) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.0.1 (2010-01-25)</h4><div class="indent"><p class="" style="">First draft.</p> (le)
+        <a href="xmpp:"></a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 3920) and XMPP IM (RFC 3921) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.0.2 (2010-02-02)</h4><div class="indent"><p class="" style="">First draft.</p> (le)
     </div></div><hr /><p>END</p></body></html>
