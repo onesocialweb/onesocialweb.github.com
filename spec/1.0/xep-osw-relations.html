@@ -10,7 +10,7 @@
       4.6.  <a href="#publisher-delete">Delete a relationship</a><br />5.  <a href="#reader">Reader Use Cases</a><br />   
       5.1.  <a href="#reader-query">Query Relationships</a><br />   
       5.2.  <a href="#reader-verify">Verify a relationship</a><br />6.  <a href="#application">Application Use Cases</a><br />7.  <a href="#model">Data Model</a><br />   
-      7.1.  <a href="#sect-id2332862">Schema</a><br />8.  <a href="#rules">Business Rules</a><br />9.  <a href="#impl">Implementation Notes</a><br />10.  <a href="#access">Accessibility Considerations</a><br />11.  <a href="#i18n">Internationalization Considerations</a><br />12.  <a href="#security">Security Considerations</a><br />13.  <a href="#iana">IANA Considerations</a><br />14.  <a href="#registrar">XMPP Registrar Considerations</a><br />15.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+      7.1.  <a href="#sect-id2319003">Schema</a><br />8.  <a href="#rules">Business Rules</a><br />9.  <a href="#impl">Implementation Notes</a><br />10.  <a href="#access">Accessibility Considerations</a><br />11.  <a href="#i18n">Internationalization Considerations</a><br />12.  <a href="#security">Security Considerations</a><br />13.  <a href="#iana">IANA Considerations</a><br />14.  <a href="#registrar">XMPP Registrar Considerations</a><br />15.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
        <a name="intro" id="intro">Introduction</a></h2>
   <div class="indent"><h3>1.1 <a name="intro-overview" id="intro-overview">Overview</a></h3>
     <p class="" style="">The XMPP Extension defined in this document is part of a collection of XMPP extensions that forms the OneSocialWeb (OSW) protocol. The purpose of the OneSocialWeb protocol is to enable free, open, and decentralized social applications on the web. In particular, this protocol can be used to turn any XMPP server into a full fledged social network, participating in the OneSocialWeb federation. The suite of extension covers all the usual social networking use cases such as user profiles, relationships, activity streams and third party applications. In addition, it provides support for fine grained access control, realtime notification and collaboration.</p>
@@ -32,16 +32,16 @@
     <p class="" style="">It should be however noted that:</p>
     <ul class="" style="">
       <li class="" style="">The publisher SHOULD NOT provide a &lt;from/&gt; element in the relationship. The &lt;from/&gt; element MUST be overwritten by the server, in order to guarantee validity (e.g. that the publisher is not trying to spoof another id).</li>
-      <li class="" style="">Each profile field MUST contain at least one &lt;acl-rule/&gt; element defining the access control for the view action. If no or invalid value is provided, the server MAY provide its own value or MAY reject the request.</li>
+      <li class="" style="">The relationship MUST contain at least one &lt;acl-rule/&gt; element defining the access control for the view action. If no or invalid value is provided, the server MAY provide its own value or MAY reject the request.</li>
       <li class="" style="">The &lt;message/&gt; is optional and MUST only be visible to the target user, when asking for confirmation</li>
     </ul>
 
-    <p class="" style="">In the following example, &lt;romeo@montague.lit&gt; wants to setup an "engaged" relationship with &lt;juliet@capulet.lit&gt;. Using his prefered social networking client, he visits Juliet's profile and request a new relationship to be setup. He chooses the type, selects the visibility (he select 'Everyone' because he wants to whole world to see this) and when he clicks the Save button, his client sends the following:</p>
+    <p class="" style="">In the following example, &lt;romeo@montague.lit&gt; wants to setup an "engaged" relationship with &lt;juliet@capulet.lit&gt;. Using his prefered social networking client, he requests a new relationship to be setup. He chooses the type, selects the visibility (he select 'Everyone' because he wants to whole world to see this) and when he clicks the Save button, his client sends the following:</p>
 
     <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Entity setup a new relationship</p><div class="indent"><pre class="prettyprint">
 &lt;iq type='set'
     from='romeo@montague.lit/orchard'
-    to='juliet@capulet.lit'
+    to='montague.lit'
     id='osw1'&gt;
   &lt;setup xmlns="http://onesocialweb.org/protocol/0.1/relationship#setup"&gt;
     &lt;relationship xmlns="http://onesocialweb.org/spec/1.0/"&gt;
@@ -60,7 +60,7 @@
 
     </pre></div>
 
-<p class="" style="">Romeo's server intercept the request, validates it, store this new relationship locally as pending, adds some required fields to the payload, remove the fields that are private to Romeo and sends a notification to Juliet to inform her of this request.</p>
+<p class="" style="">Romeo's server process the request, validates it, store this new relationship locally as pending, adds some required fields to the payload, remove the fields that are private to Romeo and sends a notification to Juliet to inform her of this request.</p>
 
     <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Server notifies remote user of new relation</p><div class="indent"><pre class="prettyprint">
 &lt;message from="romeo@montague.lit" type="headline" to="juliet@capulet.lit" &gt;
@@ -82,7 +82,7 @@
 
     </pre></div>
 
-<p class="" style="">Juliet's server process the request, it can either auto accept it or mark it as pending, waiting for Juliet to actually confirm the notification. When the status of the relationship changes, it sends a notification to Romeo with a &lt;relationship/&gt; child. The relationship item MUST contain an &lt;id/&gt; element with the same id as the one used in the request.</p>
+<p class="" style="">Juliet's server process the request, it can either auto accept it or mark it as pending, waiting for Juliet to actually confirm the relationship. When the status of the relationship changes, it sends a notification to Romeo with a &lt;relationship/&gt; child. The relationship item MUST contain an &lt;id/&gt; element with the same id as the one used in the request.</p>
 
     <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Server notifies remote user of relation status change</p><div class="indent"><pre class="prettyprint">
 &lt;message from="juliet@capulet.lit" type="headline" to="romeo@montague.lit" &gt;
@@ -260,7 +260,7 @@
        <a name="model" id="model">Data Model</a></h2>
     <p class="" style="">We have not found any data model for relationships that would fit our requirements, and have therefore opted to define our own, based on the thinking behind the <a href="http://gmpg.org/xfn/">XHTML Friends Network</a>. We would be happy to review any proposal and align with existing standards meeting our requirements.</p>
 
-    <div class="indent"><h3>7.1 <a name="sect-id2332862" id="sect-id2332862">Schema</a></h3>
+    <div class="indent"><h3>7.1 <a name="sect-id2319003" id="sect-id2319003">Schema</a></h3>
     <p class="" style="">A relationship is defined as a link between two users (identified by their bare JID). It is identified by a Globaly Unique Identified. It is characterized by a nature. It can be mutually verified, meaning that the other end of the relationship confirms this relationship as being true.</p>
 
     <ul class="" style="">
