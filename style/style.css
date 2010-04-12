@@ -60,9 +60,9 @@ h3 {
 }
 
 small {
-	font-family: Arial, Helvetica, Sans-Serif;
 	font-size: 0.9em;
 	line-height: 1.5em;
+	color: #666;
 	}
 
 code {
@@ -82,6 +82,10 @@ a {
 a:hover {
 	color: #0084c2;
 	text-decoration: underline;
+	}
+
+a.download:hover {
+	text-decoration: none;
 	}
 
 button, select {
@@ -518,6 +522,16 @@ br.fix {
 	height: 1px;
 	font-size: 0px;
 }
+
+.box2 {
+	border: 1px solid #c4d3df;
+	padding: 15px;
+	width: 275px;
+	text-align: center;
+	float: left;
+	margin: 0 25px 25px 0;
+	background-color: #ebf5fd;
+	}
 
 .box {
 	border: 1px solid #ccc;
@@ -1119,3 +1133,22 @@ code {
 	margin: 10px 0;
 	display: block;
 }
+
+.narrowcolumn table {
+	border: 1px solid #ccc;
+	}
+
+.narrowcolumn table td, .narrowcolumn table th {
+	padding: 8px;
+	}
+	
+.narrowcolumn td ul {
+	margin: 0px;
+	padding-left: 15px;
+	
+	}
+
+.narrowcolumn table ul li {
+	list-style-type: circle;
+	
+	}

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="nl" xmlns="http://www.w3.org/1999/xhtml" lang="nl">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="google-site-verification" content="iEvvoZqIa214KrElTR4eFq9W__unT8UsytZpiEkJYAA" />
+	<title>Code - OneSocialWeb - Creating a free, open, and decentralized social networking platform.</title>
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+	<link rel="stylesheet" href="style/stylesheet.css" type="text/css" media="screen"><link href="Chronicle%20-%20Lifestreaming%20service%20on%20Betavine_files/calendar.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
+</head>
+
+<body>
+<div id="pagewrapper" class="page_post">
+	
+	<div id="header">
+		<div id="home">
+			<a href="index.html" onfocus="this.blur();" title="Homepage">
+				<img class="logo" src="images/osw-v1.1.png">
+			</a>
+		</div>
+	</div>
+	
+	<div id="navigationMenu">
+		<ul>
+			<li><a onfocus="this.blur()" title="Post" href="index.html">Home</a></li>
+			<li><a onfocus="this.blur()" title="Documentation" href="docs.html">Documentation</a></li>
+			<li><a onfocus="this.blur()" title="Downloads" href="download.html">Downloads</a></li>
+			<li><a class="current" onfocus="this.blur()" title="Get code" href="code.html">Get code</a></li>
+			<li><a onfocus="this.blur()" title="About" href="about.html">About</a></li>
+		</ul>
+	</div>
+			
+	<div id="contentwrapper">
+		
+		<div id="page">
+			
+			<div class="narrowcolumn">
+				<div class="breadcrumb"><a href="index.html">Home</a> > <a href="code.html">Get code</a> > Compile instructions OpenFire plugin</div>
+				<h1>Compile instructions OpenFire plugin</h1>
+				
+				<p>This section explains how to compile and deploy the onesocialweb plugin in an Ignite’s Openfire server installation.</p>
+
+				<strong>Pre-requisites</strong>
+				
+				<p>In order to build the code of the onesocialweb plugin you will need:</p>
+				<ul class="bullets">
+					<li>A JDK with Java 1.5 compliance or higher</li>
+					<li>The Ant Java build tool</li>
+					<li>To <a href="http://www.igniterealtime.org/builds/openfire/docs/latest/documentation/source-build.html">download</a> and build the source of the Openfire server.</li>
+					<li>A properly configured installation of the Openfire server in which to deploy the plugin. For help please check <a href="http://www.igniterealtime.org/builds/openfire/docs/latest/documentation/install-guide.html">the installation guide</a>. </li>
+				</ul>
+				
+				<strong>Getting the code from the repository</strong>
+				<p>The code can be obtained from the <a href="http://github.com/onesocialweb">GitHub repository</a>.</p>
+				
+				<p>The high level folder should have the following structure:<br/>
+				-/src<br/>
+				-/lib<br/>
+				-changelog.html<br/>
+				-license.html<br/>
+				-plugin.xml<br/>
+				-readme.html</p>
+				
+				<strong>Compiling the plugin</strong>
+				<p>Once the plugin source code is in your local system, place the high level folder into the /src/plugins folder of your Openfire source. After that, you can invoke via command line the plugin task in the /build/build.xml file of the Openfire source.</p>
+				
+				<code>ant plugin –Dplugin=onesocialweb</code>
+				
+				<p>This will compile the onesocialweb plugin source and package it into a jar file. You will find it in the /target/openfire/plugins folder of your Openfire source.</p>
+				
+				<strong>Deploying</strong>
+				
+				<p>Once the plugin jar file has been built you can now place it in the /plugins directory of your Openfire installation. The jar file will be extracted and initialized by Openfire.</p>
+				
+				<strong>Working with the code - Project dependencies</strong>
+				<p>If you wish to dive into the code of the onesocialweb plugin, you can go ahead and create an Eclipse project and name it ‘openfire-plugin’, for example. Select the high-level plugin source code folder as the src folder of the Eclipse Project (Create Project from Existing Source).</p>
+				
+				<p>As you will find, the plugin requires classes in the Openfire server API, so you will also need to create an Eclipse project for the Openfire server and add it to the classpath (Buildpath) of your plugin project.</p>
+				
+				<strong>Remote Process and XML debugging</strong>
+				
+				<p>Ignite’s Openfire source is shipped with the <em>xmldebugger plugin</em>, which you can also compile and deploy in your server installation. This will print the XML traffic on your server to the server’s console, and it is a nice way for you to see what Profile and Activity querying and publishing in OneSocialWeb looks like in terms of XMPP stanzas.</p> 
+				
+				<p>You can also setup remote debugging to the Openfire server and by placing breakpoints into the onesocialweb plugin code you could follow the execution of a bit of code that interests you. For this, start the Openfire sever in remote debug mode; for example:</p>
+				
+				<code>java -Xdebug -Xint -server -Xnoagent –
+				Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000 -jar ..\lib\startup.jar</code>
+				
+				<p>and create a Remote Java Application Debug Configuration in Eclipse, indicating the onesocialweb plugin project as the source, as well as the address and remote debugging port of your Openfire server.</p>
+								
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<div id="footer">
+		
+		<div class="blockwrapper">
+			
+			
+			<div class="block">
+				<h2>About us</h2>
+				Learn who is driving this initiative. 
+				<ul>
+					<li><a href="about.html">About onesocialweb</a></li>
+					<li><a href="mailto:contact@onesocialweb.org">Email us</a></li>
+					<li><a href="http://www.twitter.com/onesocialweb">Follow us on twitter</a></li>
+					<li><a href="about-acknowledgements.html">Acknowledgements</a></li>
+				</ul>
+			</div>
+			
+			<div class="block">
+				<h2>Learn more</h2>
+				Find out more about onesocialweb!
+				<ul>
+					<li><a href="docs-why.html">Intro video</a></li>
+					<li><a href="docs-introduction.html">Overview</a></li>
+					<li><a href="docs-faq.html">F.A.Q.</a></li>
+					<li><a href="download.html">Downloads</a></li>
+					<li><a href="docs-roadmap.html">Roadmap</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="block">
+				<h2>Contribute</h2>
+				Have great ideas or want to play with code?
+				<ul>
+					<li><a href="http://groups.google.com/group/onesocialweb?lnk=srg">Join the mailinglist</a></li>
+					<li><a href="code.html">Get code</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="block">
+			</div>
+			
+			
+			
+		</div>
+		
+		<br class="fix"/>
+		
+		<div id="copyright">
+		<p>
+			<span style="font-family: arial,sans-serif;">©</span> 2010 Vodafone Group - onesocialweb is open sourced under an Apache 2 license</p>
+		</div>
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3039760-12");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body></html>

@@ -4,9 +4,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="google-site-verification" content="iEvvoZqIa214KrElTR4eFq9W__unT8UsytZpiEkJYAA" />
-	<title>Docs - OneSocialWeb - Creating a free, open, and decentralized social networking platform.</title>
-	<link rel="shortcut icon" type="image/png" href="images/favicon.png">	
-	
+	<title>Downloads - OneSocialWeb - Creating a free, open, and decentralized social networking platform.</title>
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
 	<link rel="stylesheet" href="style/stylesheet.css" type="text/css" media="screen"><link href="Chronicle%20-%20Lifestreaming%20service%20on%20Betavine_files/calendar.css" media="screen" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
 </head>
@@ -25,8 +24,8 @@
 	<div id="navigationMenu">
 		<ul>
 			<li><a onfocus="this.blur()" title="Post" href="index.html">Home</a></li>
-			<li><a class="current" onfocus="this.blur()" title="Documentation" href="docs.html">Documentation</a></li>
-			<li><a onfocus="this.blur()" title="Downloads" href="download.html">Downloads</a></li>
+			<li><a onfocus="this.blur()" title="Documentation" href="docs.html">Documentation</a></li>
+			<li><a class="current" onfocus="this.blur()" title="Downloads" href="download.html">Downloads</a></li>
 			<li><a onfocus="this.blur()" title="Get code" href="code.html">Get code</a></li>
 			<li><a onfocus="this.blur()" title="About" href="about.html">About</a></li>
 		</ul>
@@ -37,23 +36,35 @@
 		<div id="page">
 			
 			<div class="narrowcolumn">
-				<div class="breadcrumb"><a href="index.html">Home</a> > <a href="docs.html">Documentation</a> > Overview</div>
+				<div class="breadcrumb"><a href="index.html">Home</a> > Downloads</div>
+				<h1>Downloads</h1>
 				
-				<h1>Overview</h1>
+				<p>Feel free to play with our work in progress. Check the <a href="docs-roadmap.html">roadmap</a> to see what features are implemented in the current release. Don't forget to tell us what you think ;)</p>
 				
-				<p>The growth and penetration rates of the top social networks do not even fit on one slide anymore, so we don't think we need to iterate on how important social networking has become today. In fact we think it has become so fundamental that it could benefit from becoming part of the fabric of the Internet itself.</p> 
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/favicon.png" width="16" height="16"/> OneSocialWeb OpenFire Plugin</strong>
+					<p>A plugin for Ignite's <a href="http://www.igniterealtime.org/projects/openfire/index.jsp">OpenFire</a> xmpp server.</p>
+					<p><a href="http://github.com/downloads/onesocialweb/osw-openfire-plugin/osw-openfire-plugin-0.6.0.tgz" class="download"><img class="icon" src="images/download.png"/> <strong>Download</strong></a> (version 0.6, 2.4MB)</p>
+					<p>Install instructions are included in the download.</p>
+					<p><small>Download the source code as <a href="http://github.com/onesocialweb/osw-openfire-plugin/zipball/release-0.6.0">zip</a> / <a href="http://github.com/onesocialweb/osw-openfire-plugin/tarball/release-0.6.0">tgz</a></small></p>
+				</div>
 				
-				<p>In our vision there is only <strong>one social web consisting of social web nodes</strong>. A social web that would be open and universal so that anyone can join or create a social web node that in turn can communicate with all other social web nodes without constraints from either corporations or governments. We think to everyone's benefit, this would greatly increase freedom, flexibility, the rate of innovation and overall stability. </p>
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/favicon.png" width="16" height="16"/> OneSocialWeb Client Console</strong> 
+					<p>Command line console for testing the OpenFire plugin.</p>
+					<p><a href="http://github.com/downloads/onesocialweb/osw-console/osw-console-0.6.0.tgz" class="download"><img class="icon" src="images/download.png"/> <strong>Download</strong></a> (version 0.6, 1.4 MB)</p>
+					<p><small>Download the source code as <a href="http://github.com/onesocialweb/osw-console/zipball/release-0.6.0">zip</a> / <a href="http://github.com/onesocialweb/osw-console/tarball/release-0.6.0">tgz</a></small></p>
+				</div>
 				
-				<p>Quite a few share our vision and have developed initiatives to make it possible to reuse a single identity (e.g. OpenID), share your profile information (e.g. OpenSocial), take your contacts along (Portable Contacts) or allow services to do things on your behalf (OAuth). Wherever possible we build upon these initiatives, otherwise we push forward to explore uncharted territory.</p>
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/and_osw_status.png" width="18" height="18"/> OneSocialMe Web Client (Coming soon)</strong> 
+					<p>A web client to install on a OneSocialWeb enabled server.</p>
+				</div>
 				
-				<p>We believe that XMPP<sup>*1</sup>, the engine best known for its instant messaging capabilities, can serve as a solid foundation for the new social web. There are several similarities that can be leveraged: a unique identifier (e.g. alice@wonderland.lit), a profile with basic information about you, as well as a list of people you like to talk to. This would need to be extended and complemented by activities, the core elements shared on social networks. In addition, we will add support for fine grained access control, real-time notification and collaboration.</p>
-				
-				<p>Practice makes perfect. That's why we strongly believe, we have to build a reference implementation to understand how this will all work in practice. This means several distributed servers with different clients (i.e. web, desktop and mobile) to replicate experiences people are used to seeing on existing social network sites and clients.</p>
-				<hr/>
-				<p><strong><sup>*1</sup> New to XMPP?</strong> Have a look at <a href="http://www.slideshare.net/remko.troncon/xmpp-101?src=embed">this introductory slidedeck</a> by Remko Tron&ccedil;on and Peter Saint Andre.</p>
-				
-				
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/and_osw_status.png" width="18" height="18"/> OneSocialMe Mobile Client (Coming soon)</strong>
+					<p>An Android mobile client for any OneSocialWeb enabled server.</p>
+				</div>
 				
 			</div>
 			

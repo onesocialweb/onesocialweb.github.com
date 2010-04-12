@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="google-site-verification" content="iEvvoZqIa214KrElTR4eFq9W__unT8UsytZpiEkJYAA" />
 	<title>Code - OneSocialWeb - Creating a free, open, and decentralized social networking platform.</title>
-	<link rel="shortcut icon" type="image/x-icon" href="">	
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
 	<link rel="stylesheet" href="style/stylesheet.css" type="text/css" media="screen"><link href="Chronicle%20-%20Lifestreaming%20service%20on%20Betavine_files/calendar.css" media="screen" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
 </head>
@@ -25,6 +25,7 @@
 		<ul>
 			<li><a onfocus="this.blur()" title="Post" href="index.html">Home</a></li>
 			<li><a onfocus="this.blur()" title="Documentation" href="docs.html">Documentation</a></li>
+			<li><a onfocus="this.blur()" title="Downloads" href="download.html">Downloads</a></li>
 			<li><a class="current" onfocus="this.blur()" title="Get code" href="code.html">Get code</a></li>
 			<li><a onfocus="this.blur()" title="About" href="about.html">About</a></li>
 		</ul>
@@ -37,16 +38,36 @@
 			<div class="narrowcolumn">
 				<div class="breadcrumb"><a href="index.html">Home</a> > Get code</div>
 				<h1>Get code</h1>
-				<strong>Please note!</strong> Our first priority is to pin down the protocol definition. We plan to release the first code of our reference implementation end of March.
 				
-				<p>We consider it important to reality check our protocol with a reference implementation. We are currently developing a server component, a web client and a mobile application. These are written in Java and and will be made available on <a href="http://github.com/onesocialweb">GitHub</a> under an Apache 2 license :</p>
+				<p>We consider it important to reality check our protocol with a reference implementation. We are currently developing a server plugin, a web client and a mobile application. Check the <a href="docs-roadmap.html">roadmap</a> to see what features are implemented in the current release. All code is written in Java and and made available under an Apache 2 license :</p>
 				
-				<ul class="bullets">
-				  <li>A plugin for Ignite's <a href="http://www.igniterealtime.org/projects/openfire/index.jsp">OpenFire</a> xmpp server</li>
-				  <li>A web client built with <a href="http://code.google.com/webtoolkit/">Google Web Kit</a> that communicates with the XMPP server using <a href="http://xmpp.org/extensions/xep-0124.html">BOSH</a></li>
-				  <li>A <a href="http://code.google.com/android/">Google Android</a> mobile client using the <a href="http://www.igniterealtime.org/projects/smack/">Smack library</a></li>
-				  <li>A command line client console for quick testing</li>
-				</ul>
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/favicon.png" width="16" height="16"/> OneSocialWeb OpenFire Plugin</strong>
+					<p>A plugin for Ignite's <a href="http://www.igniterealtime.org/projects/openfire/index.jsp">OpenFire</a> xmpp server. Get the <a href="http://github.com/onesocialweb/osw-openfire-plugin">OneSocialWeb OpenFire Plugin</a> code.</p>
+					<p>Make sure to check out the <a href="code-compile.html">compile instructions</a>. Compiling instructions are also included in the source code.</p>
+				</div>
+				
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/favicon.png" width="16" height="16"/> OneSocialWeb Java Library</strong> 
+					<p>Library for development of Java based clients. Get the <a href="http://github.com/onesocialweb/osw-lib-java">OneSocialWeb Java Library</a> code.</p>
+				</div>
+				
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/favicon.png" width="16" height="16"/> OneSocialWeb Console</strong> 
+					<p>Command line console for testing the OpenFire plugin. Get the <a href="http://github.com/onesocialweb/osw-console">OneSocialWeb Console</a> code.</p>
+					<p>Please note that the OneSocialWeb Java Client Library required for compiling is included for convenience. Compiling instructions are included in the source code.</p>
+				</div>
+				
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/and_osw_status.png" width="18" height="18"/> OneSocialMe Web Client (coming soon)</strong> 
+					<p>A web client built with <a href="http://code.google.com/webtoolkit/">Google Web Kit</a> that communicates with the XMPP server using <a href="http://xmpp.org/extensions/xep-0124.html">BOSH</a>.</p>
+				</div>
+				
+				<div class="box2" style="width:90%; text-align: left;">
+					<strong><img class="icon" src="images/and_osw_status.png" width="18" height="18"/> OneSocialMe Mobile Client (coming soon)</strong>
+					<p>A <a href="http://code.google.com/android/">Google Android</a> mobile client using the <a href="http://www.igniterealtime.org/projects/smack/">Smack library</a>.</p>
+				</div>
+				
 			</div>
 			
 		</div>
@@ -65,6 +86,7 @@
 					<li><a href="about.html">About onesocialweb</a></li>
 					<li><a href="mailto:contact@onesocialweb.org">Email us</a></li>
 					<li><a href="http://www.twitter.com/onesocialweb">Follow us on twitter</a></li>
+					<li><a href="about-acknowledgements.html">Acknowledgements</a></li>
 				</ul>
 			</div>
 			
@@ -75,7 +97,8 @@
 					<li><a href="docs-why.html">Intro video</a></li>
 					<li><a href="docs-introduction.html">Overview</a></li>
 					<li><a href="docs-faq.html">F.A.Q.</a></li>
-					<li><a href="docs-screencast.html">Screencast</a></li>
+					<li><a href="download.html">Downloads</a></li>
+					<li><a href="docs-roadmap.html">Roadmap</a></li>
 				</ul>
 				
 			</div>
@@ -86,7 +109,6 @@
 				<ul>
 					<li><a href="http://groups.google.com/group/onesocialweb?lnk=srg">Join the mailinglist</a></li>
 					<li><a href="code.html">Get code</a></li>
-					
 				</ul>
 				
 			</div>
@@ -106,7 +128,6 @@
 		</div>
 	</div>
 	
-
 </div>
 
 <script type="text/javascript">

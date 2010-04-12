@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-: VCard4 over XMPP</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="DC.Title" content="VCard4 over XMPP" /><meta name="DC.Creator" content="Laurent Eschenauer" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for sharing vcards between users. The protocol enables users to publish their vcard, share it with other users, and query other users for their vcard. The vcard is supporting a fine grained privacy extension: users can assign access control rules on a field per field basis. In addition, users can delegate write access rights to elements of their vcard to other entities. This protocol aims at providing a flexible platform for social profile management in a decentralized social network, thus enabling all social network use cases related to user profiles. This extension is part of the OneSocialWeb suite of XMPP extensions. The xml data model for vcards is based on the upcoming vcarddav-vcardxml standard (also known as vcard4)." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2010-04-09" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="" /></head><body onload="prettyPrint()"><h1>XEP-: VCard4 over XMPP</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for sharing vcards between users. The protocol enables users to publish their vcard, share it with other users, and query other users for their vcard. The vcard is supporting a fine grained privacy extension: users can assign access control rules on a field per field basis. In addition, users can delegate write access rights to elements of their vcard to other entities. This protocol aims at providing a flexible platform for social profile management in a decentralized social network, thus enabling all social network use cases related to user profiles. This extension is part of the OneSocialWeb suite of XMPP extensions. The xml data model for vcards is based on the upcoming vcarddav-vcardxml standard (also known as vcard4).</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Laurent Eschenauer</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>&#xA9; 2010 Vodafone Group R&amp;D.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td></td></tr><tr valign="top"><td><strong>Type:</strong></td><td></td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last&#xA0;Updated:</strong></td><td>2010-04-09</td></tr></table><hr /><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />&#xA0;&#xA0;&#xA0;
+      1.1.  <a href="#intro-overview">Overview</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#glossary">Glossary</a><br />4.  <a href="#publisher">Publisher Use Cases</a><br />&#xA0;&#xA0;&#xA0;
+      4.1.  <a href="#publisher-publish">Publish Profile</a><br />&#xA0;&#xA0;&#xA0;
+      4.2.  <a href="#publisher-merge">User add or update fields to his vcard</a><br />&#xA0;&#xA0;&#xA0;
+      4.3.  <a href="#publisher-remove">Entity removes fields from its vcard </a><br />5.  <a href="#reader">Reader Use Cases</a><br />&#xA0;&#xA0;&#xA0;
+      5.1.  <a href="#reader-query">Query VCard</a><br />6.  <a href="#application">Application Use Cases</a><br />7.  <a href="#model">Data Model</a><br />&#xA0;&#xA0;&#xA0;
+      7.1.  <a href="#sect-id28010">Implementation details</a><br />&#xA0;&#xA0;&#xA0;
+      7.2.  <a href="#sect-id28064">Extensions</a><br />&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
+      7.2.1.  <a href="#sect-id28069">Access control</a><br />8.  <a href="#rules">Business Rules</a><br />9.  <a href="#impl">Implementation Notes</a><br />10.  <a href="#access">Accessibility Considerations</a><br />11.  <a href="#i18n">Internationalization Considerations</a><br />12.  <a href="#security">Security Considerations</a><br />13.  <a href="#iana">IANA Considerations</a><br />14.  <a href="#registrar">XMPP Registrar Considerations</a><br />15.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />&#xA0;&#xA0;&#xA0;&#xA0;<a href="#appendix-docinfo">A: Document Information</a><br />&#xA0;&#xA0;&#xA0;&#xA0;<a href="#appendix-authorinfo">B: Author Information</a><br />&#xA0;&#xA0;&#xA0;&#xA0;<a href="#appendix-legal">C: Legal Notices</a><br />&#xA0;&#xA0;&#xA0;&#xA0;<a href="#appendix-xmpp">D: Relation to XMPP</a><br />&#xA0;&#xA0;&#xA0;&#xA0;<a href="#appendix-discuss">E: Discussion Venue</a><br />&#xA0;&#xA0;&#xA0;&#xA0;<a href="#appendix-conformance">F: Requirements Conformance</a><br />&#xA0;&#xA0;&#xA0;&#xA0;<a href="#appendix-notes">G: Notes</a><br />&#xA0;&#xA0;&#xA0;&#xA0;<a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <div class="indent"><h3>1.1 <a name="intro-overview" id="intro-overview">Overview</a></h3>
+    <p class="" style="">The XMPP Extension defined in this document is part of a collection of XMPP extensions that forms the OneSocialWeb (OSW) protocol. The purpose of the OneSocialWeb protocol is to enable free, open, and decentralized social applications on the web. In particular, this protocol can be used to turn any XMPP server into a full fledged social network, participating in the OneSocialWeb federation. The suite of extension covers all the usual social networking use cases such as user profiles, relationships, activity streams and third party applications. In addition, it provides support for fine grained access control, realtime notification and collaboration.</p>
+    <p class="" style="">The vCard4 extension defined in this document addresses the requirement for publishing, sharing, and retrieving a user social profile (expressed in vcard). By profile, we mean a document describing an entity with details such as name, birthday, address, avatar picture, but also things like favorite movies, latest location, or in fact any other attribute that a user would like to have in its profile.</p>
+    <p class="" style="">The data model used in this extension is vcard, and in particular its XML representation, as described in the ongoing IETF work on vcard-xml. [<a href="#nt-id27664">1</a>].</p>
+    <p class="" style="">This protocol fills similar needs than the VCard (XEP-0054) currently in use by most Jabber/XMPP servers. However it also represents a major evolution by supporting vcard extensions, fine grained privacy, select queries and merging of vcards.</p>
+  </div>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p class="" style="">STRONGLY RECOMMENDED.</p>
+<h2>3.
+       <a name="glossary" id="glossary">Glossary</a></h2>
+  <p class="" style="">OPTIONAL.</p>
+<h2>4.
+       <a name="publisher" id="publisher">Publisher Use Cases</a></h2>
+  <p class="" style="">This section defines the use cases for and protocols to be used by any entity that wishes to manipulate its own profile, stored at its server. In particular to create and update its whole profile or a specific field in its profile.</p>
+
+  <div class="indent"><h3>4.1 <a name="publisher-publish" id="publisher-publish">Publish Profile</a></h3>
+    <p class="" style="">An entity can publish its profile (and thus overwrite any previously published profile) by sending an IQ-set to the bare domain containing a &lt;publish/&gt; element with a &lt;vcard/&gt; child. The vcard syntax should conform to the <a href="#model">data model</a>.</p>
+    <p class="" style="">In the following example, &lt;hamlet@denmark.lit&gt; wants to publish his vcard. It consists of a fullname, the url of his photo, his birthdate, and a short bio. He uses his favorite xmmp client and publishes the following:</p>
+
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User publishes his vcard</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='hamlet@denmark.lit/client'
+    to='denmark.lit'
+    id='id1'&gt;
+  &lt;publish xmlns="http://onesocialweb.org/spec/1.0/vcard4#publish"&gt;
+    &lt;vcard xmlns="urn:ietf:params:xml:ns:vcard-4.0"&gt;
+      &lt;fn&gt;
+        &lt;text&gt;Lord Hamlet&lt;/text&gt;
+        &lt;acl-rule xmlns="http://onesocialweb.org/spec/1.0/"&gt;
+          &lt;acl-action permission="http://onesocialweb.org/spec/1.0/acl/permission/grant"&gt;
+            http://onesocialweb.org/spec/1.0/acl/action/view
+          &lt;/acl-action&gt;
+          &lt;acl-subject type="http://onesocialweb.org/spec/1.0/acl/subject/everyone"/&gt;
+        &lt;/acl-rule&gt;
+      &lt;/fn&gt;
+      &lt;photo&gt;
+        &lt;uri&gt;http://denmark.lit/hamlet.jpg&lt;/uri&gt;
+      &lt;/photo&gt;
+      &lt;note&gt;
+        &lt;text&gt;Philosopher, dreamer, writer...&lt;/text&gt;
+      &lt;/note&gt;
+    &lt;/vcard&gt;
+  &lt;/publish&gt;
+&lt;/iq&gt;
+
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>4.2 <a name="publisher-merge" id="publisher-merge">User add or update fields to his vcard</a></h3>
+    <p class="" style="">An entity can add or update fields to its vcard by sending an IQ-set to the bare domain containing a &lt;merge/&gt; element with a &lt;vcard/&gt; child. All fields of this new vcard will be merged in the existing one following the vcard merging strategy.  [<a href="#nt-id27801">2</a>]</p>
+
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Entity add a fields to its profile and updates another one</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='hamlet@denmark.lit/snsclient'
+    to='denmark.lit'
+    id='osw2'&gt;
+  &lt;merge xmlns="http://onesocialweb.org/spec/1.0/vcard4#merge"&gt;
+    &lt;vcard xmlns="urn:ietf:params:xml:ns:vcard-4.0"&gt;
+      &lt;fn&gt;
+        &lt;text&gt;THE Lord Hamlet&lt;/text&gt;
+        &lt;acl-rule xmlns="http://onesocialweb.org/spec/1.0/"&gt;
+          &lt;acl-action permission="http://onesocialweb.org/spec/1.0/acl/permission/grant"&gt;
+            http://onesocialweb.org/spec/1.0/acl/action/view
+          &lt;/acl-action&gt;
+          &lt;acl-subject type="http://onesocialweb.org/spec/1.0/acl/subject/everyone"/&gt;
+        &lt;/acl-rule&gt;
+      &lt;/fn&gt;
+      &lt;birthday&gt;
+        &lt;datetime&gt;1850-04-06T21:23:00-07:00&lt;/datetime&gt;
+        &lt;acl-rule xmlns="http://onesocialweb.org/spec/1.0/"&gt;
+          &lt;acl-action permission="http://onesocialweb.org/spec/1.0/acl/permission/grant"&gt;
+            http://onesocialweb.org/spec/1.0/acl/action/view
+          &lt;/acl-action&gt;
+          &lt;acl-subject type="http://onesocialweb.org/spec/1.0/acl/subject/group"&gt;Friends&lt;/acl-subject&gt;
+        &lt;/acl-rule&gt;
+      &lt;/birthday&gt;
+    &lt;/vcard&gt;
+  &lt;/merge&gt;
+&lt;/iq&gt;
+
+    </pre></div>
+
+<p class="" style="">In this example, Hamlet is adding a birthday field and updating his full name.</p>
+
+  </div>
+
+  <div class="indent"><h3>4.3 <a name="publisher-remove" id="publisher-remove">Entity removes fields from its vcard </a></h3>
+    <p class="" style="">An entity can delete fields from its profile by sending an IQ-set to the bare domain containing a &lt;remove/&gt; element with a &lt;vcard/&gt; child. Every field, from the submitted vcard, that can be uniquely identified, will be deleted.</p>
+
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Entity remove a field from its profile</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='hamlet@denmark.lit/snsclient'
+    to='denmark.lit'
+    id='osw4'&gt;
+  &lt;remove xmlns="http://onesocialweb.org/spec/1.0/vcard4#remove"&gt;
+    &lt;vcard xmlns="urn:ietf:params:xml:ns:vcard-4.0"&gt;
+      &lt;birthday /&gt;
+    &lt;/vcard&gt;
+  &lt;/delete&gt;
+&lt;/iq&gt;
+
+    </pre></div>
+
+  </div>
+  
+<h2>5.
+       <a name="reader" id="reader">Reader Use Cases</a></h2>
+  <p class="" style="">This section defines the use cases for and protocols to be used by any entity that wishes to query the vcard of another entity. In all of the following use cases, the server MUST comply with the privacy settings attached to the fields populating the vcard of the target entity.</p>
+
+  <div class="indent"><h3>5.1 <a name="reader-query" id="reader-query">Query VCard</a></h3>
+
+    <p class="" style="">An entity can query the vcard of another entity by sending an IQ-get to the bare JID of the target entity containing  a &lt;query/&gt; element. The server replies to this request with a vcard containing all the fields that the requesting entity is allowed to see.</p>
+
+    <p class="" style="">It should be noted that:</p>
+    <ul class="" style="">
+      <li class="" style="">A valid vcard document MUST always be returned, even if no fields are visible.</li>
+      <li class="" style="">&lt;acl-rule/&gt; extensions MUST must be stripped of a vcard when it is requested by another entity than the owner</li>
+    </ul>
+
+    <p class="" style="">In the following example, &lt;romeo@montague.lit&gt; wants to check the profile of &lt;juliet@capulet.lit&gt; to better understand who is this girl that everyone is talking about. He opens his prefered xmpp client and types in Juliet's identifier in the navigation box. The client query for the vcard with the following request:</p>
+
+   <p class="caption"><a name="example-4" id="example-4"></a>Example 4. User Query for VCard</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.lit/orchard'
+    to='juliet@capulet.lit'
+    id='osw2'&gt;
+  &lt;query xmlns="http://onesocialweb.org/spec/1.0/vcard4#query"&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+    <p class="" style="">To which Juliet's server replies with a vcard containing all fields that Romeo is allowed to see:</p>
+
+   <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Server Reply to vcard Query</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='juliet@capulet.lit' 
+    to='romeo@montague.lit/orchard'&gt;
+  &lt;query xmlns="http://onesocialweb.org/spec/1.0/vcard4#query&gt;
+    &lt;vcard xmlns="urn:ietf:params:xml:ns:vcard-4.0"&gt;
+      &lt;fn&gt;
+        &lt;text&gt;Juliet Capulet&lt;/text&gt;
+      &lt;/fn&gt;
+      &lt;photo&gt;
+        &lt;uri&gt;http://capulet.lit/juliet.jpg&lt;/uri&gt;
+      &lt;/photo&gt;
+      &lt;note&gt;
+        &lt;text&gt;Lonely girl,looking for love !&lt;/text&gt;
+      &lt;/note&gt;
+    &lt;/vcard&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+  </div>
+
+<h2>6.
+       <a name="application" id="application">Application Use Cases</a></h2>
+  <p class="" style="">This section defines the use cases for and protocols to be used by any third party application that wishes to add/modify/delete fields of a vcard on behalf of a user. For example, a user could authorize the &lt;robot@geolocator.com/&gt; entity to update its &lt;location/&gt; field.</p>
+  <p class="" style="">//TODO: I wonder if this should be here, or managed at a more higher level (a broad delegation framework ?). Well.. we are far from tackling these problems anyway.</p>
+<h2>7.
+       <a name="model" id="model">Data Model</a></h2>
+    <p class="" style="">The data model used is vcard xml. We precise here some implementation details and extensions.</p>
+
+    <div class="indent"><h3>7.1 <a name="sect-id28010" id="sect-id28010">Implementation details</a></h3>
+      <p class="" style="">To simplify parsing and formating of timestamp, DataTime constructs are always Atom compatible constructs, as specified in <span class="ref" style=""><a href="http://tools.ietf.org/html/rfc4287">RFC 4287</a></span>  [<a href="#nt-id28054">3</a>]</p>
+
+      <p class="" style="">We leverage the extensibility of the vcard-xml model to add &lt;acl-rule/&gt; elements to a field, describing the visibility of the field to other users in the network.</p>
+    </div>
+
+    <div class="indent"><h3>7.2 <a name="sect-id28064" id="sect-id28064">Extensions</a></h3>
+      <div class="indent"><h3>7.2.1 <a name="sect-id28069" id="sect-id28069">Access control</a></h3>
+        <p class="" style="">The access control element used in this specification is described in a separate document.</p>
+      </div>
+    </div>
+<h2>8.
+       <a name="rules" id="rules">Business Rules</a></h2>
+  <p class="" style="">OPTIONAL.</p>
+<h2>9.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p class="" style="">OPTIONAL.</p>
+<h2>10.
+       <a name="access" id="access">Accessibility Considerations</a></h2>
+  <p class="" style="">OPTIONAL.</p>
+<h2>11.
+       <a name="i18n" id="i18n">Internationalization Considerations</a></h2>
+  <p class="" style="">OPTIONAL.</p>
+<h2>12.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p class="" style="">REQUIRED.</p>
+<h2>13.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p class="" style="">REQUIRED.</p>
+<h2>14.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p class="" style="">REQUIRED.</p>
+<h2>15.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="" style="">REQUIRED for protocol specifications.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: <br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-"></a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-"></a><br />
+            Version: 0.2<br />
+            Last Updated: 2010-04-09<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0030, XEP-0059<br />Supersedes: XEP-0054<br />
+                Superseded By: None<br />
+            Short Name: NOT_YET_ASSIGNED<br />
+              Source Control: 
+                <a class="standardsButton" href="http://svn.xmpp.org:18080/browse/XMPP/trunk/extensions/xep-.xml">HTML</a>&#xA0;
+                <a class="standardsButton" href="http://svn.xmpp.org:18080//changelog/~rss/XMPP/trunk/extensions/xep-.xml/rss.xml">RSS</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Laurent Eschenauer</h3><p class="indent">
+        Email:
+        <a href="mailto:laurent.eschenauer@vodafone.com">laurent.eschenauer@vodafone.com</a><br />
+        JabberID: 
+        <a href="xmpp:"></a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 3920) and XMPP IM (RFC 3921) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-id27664" id="nt-id27664">1</a>. The latest draft being available at &lt;<a href="http://tools.ietf.org/html/draft-ietf-vcarddav-vcardxml-02">http://tools.ietf.org/html/draft-ietf-vcarddav-vcardxml-02</a>&gt;.</p><p><a name="nt-id27801" id="nt-id27801">2</a>. Detailed in &lt;<a href="http://tools.ietf.org/html/draft-ietf-vcarddav-vcardrev-09#section-7">http://tools.ietf.org/html/draft-ietf-vcarddav-vcardrev-09#section-7</a>&gt;</p><p><a name="nt-id28054" id="nt-id28054">3</a>. RFC 4287: The Atom Syndication Format &lt;<a href="http://tools.ietf.org/html/rfc4287">http://tools.ietf.org/html/rfc4287</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2010-04-09)</h4><div class="indent"><p class="" style="">Evolved to vCard4.</p> (le)
+    </div><h4>Version 0.1 (2010-01-25)</h4><div class="indent"><p class="" style="">First draft.</p> (le)
+    </div></div><hr /><p>END</p></body></html>
