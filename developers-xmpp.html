@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="nl" xmlns="http://www.w3.org/1999/xhtml" lang="nl">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="google-site-verification" content="iEvvoZqIa214KrElTR4eFq9W__unT8UsytZpiEkJYAA" />
+	<title>Developers - OneSocialWeb - Creating a free, open, and decentralized social networking platform.</title>
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">	
+	<link rel="stylesheet" href="style/stylesheet.css" type="text/css" media="screen"><link href="Chronicle%20-%20Lifestreaming%20service%20on%20Betavine_files/calendar.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
+</head>
+
+<body>
+<div id="pagewrapper" class="page_post">
+	
+	<div id="header">
+		<div id="home">
+			<a href="index.html" onfocus="this.blur();" title="Homepage">
+				<img class="logo" src="images/osw-v1.1.png">
+			</a>
+		</div>
+	</div>
+	
+	<div id="navigationMenu">
+	</div>
+			
+	<div id="contentwrapper">
+		
+		<div id="page">
+		
+			<div id="subnavigationMenu">
+				<ul class="bullets">
+				  <li><a href="developers.html">Developers overview</a></li>
+				  <li><a href="developers-xmpp.html" class="current">Why use XMPP?</a></li>
+				  <li><a href="developers-downloads.html">Downloads</a></li>
+				  <li><a href="developers-code.html">Get code</a></li>
+				  <li><a href="developers-protocol.html">Draft protocol specification</a></li>
+				  <li><a href="developers-roadmap.html">Roadmap</a></li>
+				  <li><a href="http://wiki.github.com/onesocialweb/osw-openfire-plugin/">Wiki</a></li>
+				</ul>
+			</div>
+		
+			<div class="narrowcolumn">
+				<h1>Why use XMPP?</h1>
+				
+				<h2>What XMPP has 
+				to offer</h2>
+				<p>We believe that 
+				XMPP, the engine best known for its instant messaging capabilities, 
+				can serve as a solid foundation for the new social web. There are several 
+				similarities that can be leveraged: </p>
+				<ul class="bullets">
+				  <li>A unique identifier 
+				  called jabber ID or JID e.g. alice@wonderland.lit in a familiar e-mail 
+				  like format </li>
+				  <li>A profile with basic 
+				  information about you (in the shape of the upcoming vcard xml spec &amp; 
+				  avatar)</li>
+				  <li>A list of friends (the 
+				  so called roster) </li>
+				  <li>A means to share events 
+				  of individuals (called Personal Eventing Protocol or PEP)</li>
+				</ul>
+				<p>A tremendous advantage 
+				of XMPP is that in its very nature it tackles security issues that are 
+				not straight forward to solve in the web world. Since all traffic is 
+				routed through the server and the identity of that server can be validated 
+				with signatures issued by Certified Authorities, end users do not need 
+				to worry about complex things like signatures to establish secure communication. 
+				Like in the email world the trust is at the server level: the server 
+				is expected to behave according to several rules. </p>
+				<p>Another advantage 
+				is that xmpp has been designed to send all messages in real-time using 
+				a very efficient push mechanism. Existing web or polling based mechanisms 
+				are often making many unnecessary requests introducing network load 
+				and are not real-time.</p>
+				<p>Finally XMPP is 
+				already a distributed social web in its own right for the purpose of 
+				chatting. With several subtle modifications it could very quickly become 
+				a full fledged social web with substantial critical mass.</p>
+				<h2>What XMPP is 
+				still lacking</h2>
+				<p>To realise our 
+				vision the XMPP foundations would need to be extended and complemented 
+				with the following elements:</p>
+				<ul class="bullets">
+				  <li>Activities: the core 
+				  elements shared on social networks. We are using the ActivityStrea.ms 
+				  standard for this purpose. This is the de-facto standard and a 1.0 release 
+				  is expected soon.</li>
+				  <li>Fine grained access 
+				  control: we want to enable both public oriented Twitter like social 
+				  nodes as well as more private oriented Facebook like social nodes. For 
+				  this we think it is essential to include fine grained access control 
+				  at a protocol level. With fine-grained we mean that end users have precise 
+				  control on who can see or do what: for activities on a per activity 
+				  basis, for profiles on a field per field basis. This is not only about 
+				  viewing rights, you could also delegate editing or updating to third 
+				  parties e.g. you could allow a location provider to update your location.</li>
+				  <li>Subscriptions: we allow 
+				  anyone to subscribe to another’s activity, profile or relation updates 
+				  again with fine grained control e.g. maybe you only want to get photo’s 
+				  or blog posts from someone. This to keep the user in control and avoid 
+				  information overload. Subscriptions can be asynchronous, can be setup 
+				  without friending and respect relevant access control rules. You only 
+				  receive what you are allowed to see.</li>
+				  <li>Collaboration: this 
+				  is a different flavour related to fine grained access control. You can 
+				  allow others to edit or work together on projects or tasks e.g. a shared 
+				  photo album. </li>
+				  <li>Relations: you can define 
+				  the nature of the relationships of your friends e.g. colleague or fiancé. 
+				  Relations can be confirmed or declined. We add a mechanism for anyone 
+				  to validate a claimed relationship.</li>
+				  <li>Offline message store: 
+				  if a user is offline, normal chat messages are dropped. We need to add 
+				  an offline message store that stores messages when you are not online. 
+				  We will effectively put all messages you get in a database so end users 
+				  can navigate backwards in time. </li>
+				</ul>
+				<p>Activities, profile 
+				and relations would have to be extensible to accommodate unforeseen 
+				future use cases. All the existing standards we selected are employing 
+				extensible xml formats using name spaces. </p>
+				<h2>The role of the 
+				web</h2>
+				<p>Does this mean 
+				there is no role to play for the web? We believe that the web will remain 
+				a very important place to discover, consume and publish social activities 
+				as well as people’s profiles. Moreover we think that http based interfacing 
+				(e.g. via REST) for now will remain the de facto way of communicating 
+				between social web clients and servers. That is why we are including 
+				a web client for OneSocialWeb and eventually will include a REST API 
+				for client to server communication.</p>
+				<p>We foresee that 
+				in the future you can selectively expose activities and parts of your 
+				profile transparently through your browser when you are browsing the 
+				web. You could for instance authorize Amazon when you visit their website 
+				to read your book reviews and recommend relevant books to you without 
+				having to login.</p>
+				<h2>XMPP on the mobile</h2>
+				<p>OneSocialWeb enabled 
+				clients can work on mobile phones just like existing social network 
+				or chat clients on the market place, either using web based APIs or 
+				native XMPP. To offer real-time notification, it is important that the 
+				mobile platform supports background threads (otherwise you always need 
+				to have the app activated) and that the client uses native XMPP. Since 
+				XMPP has really different characteristics, we are implementing an Android 
+				client to understand connectivity issues when switching bearers or reconnecting 
+				(2G/3G/WIFI/No network), network traffic implications (XMPP by default 
+				broadcasts presence changes of your complete roster, but is otherwise 
+				highly efficient) and overall impact on battery life. </p>
+
+
+				
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<div id="footer">
+		
+		<div class="blockwrapper">
+			
+			
+			<div class="block">
+				<h2>About us</h2>
+				Learn who is driving this initiative. 
+				<ul>
+					<li><a href="about.html">About onesocialweb</a></li>
+					<li><a href="mailto:contact@onesocialweb.org">Email us</a></li>
+					<li><a href="http://www.twitter.com/onesocialweb">Follow us on twitter</a></li>
+					<li><a href="about-acknowledgements.html">Acknowledgements</a></li>
+				</ul>
+			</div>
+			
+			<div class="block">
+				<h2>Learn more</h2>
+				Find out more about onesocialweb!
+				<ul>
+					<li><a href="developers.html">For developers</a></li>
+					<li><a href="users.html">For users</a></li>
+					<li><a href="operators.html">For operators</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="block">
+				<h2>Contribute</h2>
+				Have great ideas or feedback?
+				<ul>
+					<li><a href="http://groups.google.com/group/onesocialweb?lnk=srg">Join the mailinglist</a></li>
+					
+				</ul>
+				
+			</div>
+			
+			<div class="block">
+			</div>
+			
+			
+			
+		</div>
+		
+		<br class="fix"/>
+		
+		<div id="copyright">
+		<p>
+			<span style="font-family: arial,sans-serif;">©</span> 2010 Vodafone Group - onesocialweb is open sourced under an Apache 2 license</p>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3039760-12");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body></html>
