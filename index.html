@@ -7,7 +7,7 @@
 	<title>OneSocialWeb - Creating a free, open, and decentralized social networking platform.</title>
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">	
 	
-	<link rel="stylesheet" href="style/stylesheet.css" type="text/css" media="screen"><link href="Chronicle%20-%20Lifestreaming%20service%20on%20Betavine_files/calendar.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="style/stylesheet.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
 </head>
 
@@ -30,11 +30,48 @@
 		<div id="page" style="background: url('images/bg3.jpg') no-repeat;">
 			<div id="homepage">
 				
-				<div class="box" style="width: 815px;margin-right: 0px;height: 280px;">
+				<div class="box" style="width: 515px;margin-right: 0px;height: 280px;float: left;">
 					<div class="video">
 						<object width="430" height="265"><param name="movie" value="http://www.youtube.com/v/o7Pt0PXC_Bs&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/o7Pt0PXC_Bs&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="430" height="265"></embed></object>
 					</div>
+					
 				</div>
+				
+				<div style="float: right;">
+					<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+					<script>
+					new TWTR.Widget({
+					  version: 2,
+					  type: 'profile',
+					  rpp: 5,
+					  interval: 6000,
+					  width: 275,
+					  height: 225,
+					  theme: {
+					    shell: {
+					      background: '#DEEEF9',
+					      color: '#43525F'
+					    },
+					    tweets: {
+					      background: '#ffffff',
+					      color: '#43525F',
+					      links: '#0084C2'
+					    }
+					  },
+					  features: {
+					    scrollbar: true,
+					    loop: false,
+					    live: true,
+					    hashtags: true,
+					    timestamp: true,
+					    avatars: false,
+					    behavior: 'all'
+					  }
+					}).render().setUser('onesocialweb').start();
+					</script>
+				</div>
+				
+				<br style="clear: both;"/>
 				
 				<div class="teaser">
 					We dream of a world where all social networks are connected and work together in a way similar to email. Our projects aims to define a language to bridge these networks and make it easy for social networks to join a bigger social web. You're invited to help make this a reality.

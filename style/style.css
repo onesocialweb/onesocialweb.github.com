@@ -586,12 +586,13 @@ br.fix {
 	text-align: center;
 	float: left;
 	margin: 0 25px 25px 0;
-	font-size: 1.2em;
+	font-size: .9em;
 	background: #fff;
 	}
 	
 .box h4 {
-	margin: 0 0 15px 0;
+	margin: 0 0 10px 0;
+	font-size: 1.2em;
 	}
 
 /* Blog */
