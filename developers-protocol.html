@@ -42,12 +42,12 @@
 		
 			<div class="narrowcolumn">
 				<h1>Draft protocol specification</h1>
-				<strong>Last updated - 13 April 2010</strong>
+				<strong>Last updated - 4 July 2011</strong>
 				
-				<p>Firstly we would like to state that we will not invent new things where good existing alternatives exist.</p>
-				<p>Onesocialweb is based on an XMPP architecture. The following four <strong>draft</strong> XMPP Protocol extensions have been defined. You can always check the latest version in the <a href="http://github.com/onesocialweb/documentation/tree/master/extensions/">GIT respository</a>.</p>
+				<p>Firstly we would like to state that we did not want to invent new things where we found good existing alternatives.</p>
+				<p>Onesocialweb is based on an XMPP architecture. The following four <strong>draft</strong> XMPP Protocol extensions have been defined as part of the protocol.
 				<ul class="bullets">
-				  <li><a href="spec/1.0/osw-activities.html">Activity Stream over XMPP</a>: This specification defines an XMPP protocol extension for sharing, archiving and retrieving generic social networking activities. It supports simple activities like blogging, microblogging, bookmarking, sharing pictures, etc. and also supports custom activities. The activity publishing supports fine grained privacy control: users can assign access control rules on a per activity basis. This protocol aims at providing a flexible platform for social activities management in a decentralized social network, thus enabling all social network use cases related to sharing of activities. The data format for Activities closely follows the  <a href="http://activitystrea.ms/" target="_blank">activitystrea.ms</a> standard with a few additions/clarifications. The protocol flow is based on <a href="http://xmpp.org/extensions/xep-0277.html">XEP-0277</a> (Microblogging Over XMPP) and is therefore using <a href="http://xmpp.org/extensions/xep-0163.html">XEP-0163</a> (Personal Eventing Protocol).</li>
+				  <li><a href="spec/1.0/osw-activities.html">Activity Streams over XMPP</a>: This specification defines an XMPP protocol extension for sharing, archiving and retrieving generic social networking activities. It supports simple activities like blogging, microblogging, bookmarking, sharing pictures, etc. and also supports custom activities. The activity publishing supports fine grained privacy control: users can assign access control rules on a per activity basis. This protocol aims at providing a flexible platform for social activities management in a decentralized social network, thus enabling all social network use cases related to sharing of activities. The data format for Activities closely follows the  <a href="http://activitystrea.ms/" target="_blank">activitystrea.ms</a> standard with a few additions/clarifications. The protocol flow is based on <a href="http://xmpp.org/extensions/xep-0277.html">XEP-0277</a> (Microblogging Over XMPP) and is therefore using <a href="http://xmpp.org/extensions/xep-0163.html">XEP-0163</a> (Personal Eventing Protocol).</li>
 				  <li><a href="spec/1.0/osw-vcard4.html">VCard4 over XMPP</a>: This specification defines an XMPP protocol extension for sharing vcards between users. The protocol enables users to publish their vcard, share it with other users, and query other users for their vcard. The vcard is supporting a fine grained privacy extension: users can assign access control rules on a field per field basis. In addition, users can delegate write access rights to elements of their vcard to other entities. This protocol aims at providing a flexible platform for social profile management in a decentralized social network, thus enabling all social network use cases related to user profiles. The xml data model for vcards is based on the upcoming <a href="http://tools.ietf.org/html/draft-ietf-vcarddav-vcardxml-05">vcarddav-vcardxml</a> standard (also known as vcard4).</li>
 				  <li><a href="spec/1.0/osw-relations.html">Social Relationships</a>: This specification defines an XMPP protocol extension for establishing, sharing, confirming and verifying social relationships between users. The protocol enables a user to establish social relationships (e.g. friend, colleague, member) with an other user, to expose (share) his established relationships with other users, to confirm that a relationship declared by another user is true, and to verify that a relationship declared by a user towards another user is indeed true. Each relationship can be assigned a fine grained privacy control: users can assign access control rules on a relationship per relationship basis. This protocol aims at providing a flexible platform for social relationships management in a decentralized social network, thus enabling all social network use cases related to relationships. The data format is inspired by the work of the <a href="http://gmpg.org/xfn/">XFN standard</a>.</li>
 				  <li><a href="spec/1.0/osw-inbox.html">Personal Eventing Protocol (PEP) Inbox</a>: This specification defines an XMPP protocol extension for offline storage of PEP events in a user inbox (itself a PEP node) so that clients can easily retrieve offline messages. In the future, it could be evolved into a more generic offline PubSub extension, or replaced by an other means to manage offline notifications. The protocol flow is based on <a href="http://xmpp.org/extensions/xep-0060.html">XEP-0060</a> (Publish-Subscribe) and <a href="http://xmpp.org/extensions/xep-0163.html">XEP-0163</a> (Personal Eventing Protocol).</li>					
@@ -65,11 +65,11 @@
 			
 			<div class="block">
 				<h2>About us</h2>
-				Learn who is driving this initiative. 
+				Learn how this initiative started. 
 				<ul>
 					<li><a href="about.html">About onesocialweb</a></li>
-					<li><a href="mailto:contact@onesocialweb.org">Email us</a></li>
-					<li><a href="http://www.twitter.com/onesocialweb">Follow us on twitter</a></li>
+					<li><a href="mailto:contact@onesocialweb.org">Email contact</a></li>
+					<li><a href="http://www.twitter.com/onesocialweb">Follow the twitter account</a></li>
 					<li><a href="about-acknowledgements.html">Acknowledgements</a></li>
 				</ul>
 			</div>
@@ -106,7 +106,7 @@
 		
 		<div id="copyright">
 		<p>
-			<span style="font-family: arial,sans-serif;">©</span> 2010 Vodafone Group - onesocialweb is open sourced under an Apache 2 license</p>
+			<span style="font-family: arial,sans-serif;">©</span> 2011 Vodafone Group - onesocialweb is open sourced under an Apache 2 license</p>
 		</div>
 	</div>
 

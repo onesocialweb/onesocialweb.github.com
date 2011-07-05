@@ -51,10 +51,10 @@
 				similarities that can be leveraged: </p>
 				<ul class="bullets">
 				  <li>A unique identifier 
-				  called jabber ID or JID e.g. alice@wonderland.lit in a familiar e-mail 
+				  called Jabber ID or JID e.g. alice@wonderland.lit in a familiar e-mail 
 				  like format </li>
 				  <li>A profile with basic 
-				  information about you (in the shape of the upcoming vcard xml spec &amp; 
+				  information about you (in the shape of the upcoming Vcard XML spec &amp; 
 				  avatar)</li>
 				  <li>A list of friends (the 
 				  so called roster) </li>
@@ -70,7 +70,7 @@
 				Like in the email world the trust is at the server level: the server 
 				is expected to behave according to several rules. </p>
 				<p>Another advantage 
-				is that xmpp has been designed to send all messages in real-time using 
+				is that XMPP has been designed to send all messages in real-time using 
 				a very efficient push mechanism. Existing web or polling based mechanisms 
 				are often making many unnecessary requests introducing network load 
 				and are not real-time.</p>
@@ -85,13 +85,12 @@
 				with the following elements:</p>
 				<ul class="bullets">
 				  <li>Activities: the core 
-				  elements shared on social networks. We are using the ActivityStrea.ms 
-				  standard for this purpose. This is the de-facto standard and a 1.0 release 
-				  is expected soon.</li>
+				  elements shared on social networks. OneSocialWeb uses the ActivityStrea.ms 
+				  standard for this purpose. This is the de-facto standard and a 1.0 has already been released.</li>
 				  <li>Fine grained access 
-				  control: we want to enable both public oriented Twitter like social 
-				  nodes as well as more private oriented Facebook like social nodes. For 
-				  this we think it is essential to include fine grained access control 
+				  control: we wanted to enable both public-oriented Twitter-like social 
+				  nodes as well as more private-oriented Facebook-like social nodes. For 
+				  this we thought it essential to include fine grained access control 
 				  at a protocol level. With fine-grained we mean that end users have precise 
 				  control on who can see or do what: for activities on a per activity 
 				  basis, for profiles on a field per field basis. This is not only about 
@@ -100,7 +99,7 @@
 				  <li>Subscriptions: we allow 
 				  anyone to subscribe to another’s activity, profile or relation updates 
 				  again with fine grained control e.g. maybe you only want to get photo’s 
-				  or blog posts from someone. This to keep the user in control and avoid 
+				  or blog posts from someone. This is to keep the user in control and avoid 
 				  information overload. Subscriptions can be asynchronous, can be setup 
 				  without friending and respect relevant access control rules. You only 
 				  receive what you are allowed to see.</li>
@@ -121,7 +120,7 @@
 				<p>Activities, profile 
 				and relations would have to be extensible to accommodate unforeseen 
 				future use cases. All the existing standards we selected are employing 
-				extensible xml formats using name spaces. </p>
+				extensible XML formats using name spaces. </p>
 				<h2>The role of the 
 				web</h2>
 				<p>Does this mean 
@@ -130,8 +129,8 @@
 				as well as people’s profiles. Moreover we think that http based interfacing 
 				(e.g. via REST) for now will remain the de facto way of communicating 
 				between social web clients and servers. That is why we are including 
-				a web client for OneSocialWeb and eventually will include a REST API 
-				for client to server communication.</p>
+				a web client for OneSocialWeb and an ideally, a REST API 
+				for client to server communication should be offered as well.</p>
 				<p>We foresee that 
 				in the future you can selectively expose activities and parts of your 
 				profile transparently through your browser when you are browsing the 
@@ -145,7 +144,7 @@
 				native XMPP. To offer real-time notification, it is important that the 
 				mobile platform supports background threads (otherwise you always need 
 				to have the app activated) and that the client uses native XMPP. Since 
-				XMPP has really different characteristics, we are implementing an Android 
+				XMPP has really different characteristics, we have implemented an Android 
 				client to understand connectivity issues when switching bearers or reconnecting 
 				(2G/3G/WIFI/No network), network traffic implications (XMPP by default 
 				broadcasts presence changes of your complete roster, but is otherwise 
@@ -167,11 +166,11 @@
 			
 			<div class="block">
 				<h2>About us</h2>
-				Learn who is driving this initiative. 
+				Learn how this initiative started.
 				<ul>
 					<li><a href="about.html">About onesocialweb</a></li>
-					<li><a href="mailto:contact@onesocialweb.org">Email us</a></li>
-					<li><a href="http://www.twitter.com/onesocialweb">Follow us on twitter</a></li>
+					<li><a href="mailto:contact@onesocialweb.org">Email contact</a></li>
+					<li><a href="http://www.twitter.com/onesocialweb">Follow the twitter account</a></li>
 					<li><a href="about-acknowledgements.html">Acknowledgements</a></li>
 				</ul>
 			</div>
@@ -208,7 +207,7 @@
 		
 		<div id="copyright">
 		<p>
-			<span style="font-family: arial,sans-serif;">©</span> 2010 Vodafone Group - onesocialweb is open sourced under an Apache 2 license</p>
+			<span style="font-family: arial,sans-serif;">©</span> 2011 Vodafone Group - onesocialweb is open sourced under an Apache 2 license</p>
 		</div>
 	</div>
 
